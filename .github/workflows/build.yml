@@ -1,0 +1,31 @@
+
+# /** Vulnerable versions
+# *  8.0.0 to 19.2.7
+# *  20.0.0 to 20.1.6
+# *  21.0.0 to 21.2.10
+# *  22.0.0 to 22.0.8
+# */
+
+
+name: build
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push, workflow_dispatch]
+jobs:
+  publish_papercut_ng_mf_docker_images:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [19.2.7, 20.1.4, 21.2.10, 22.0.0]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build
+        run: docker build --force-rm --rm --tag ghcr.io/isaac-gc/papercut_ng_mf:${{ matrix.version }} ./base
+      - name: Login to Github Container Repository
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish image
+        run: docker push ghcr.io/isaac-gc/concrete-cms-docker:${{ matrix.version }}
