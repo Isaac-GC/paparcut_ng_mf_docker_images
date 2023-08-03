@@ -22,7 +22,7 @@ jobs:
         run: |
           docker build --force-rm --rm \
           --build-arg="PAPERCUT_MAJOR_VER=${{ matrix.version.major_ver }}" \
-          --build-arg="PAPERCUT_VERSION=${{ matrix.version.ver }}"
+          --build-arg="PAPERCUT_VERSION=${{ matrix.version.ver }}" \
           --tag ghcr.io/isaac-gc/papercut_ng_mf:${{ matrix.version.ver }} .
 
       - name: Login to Github Container Repository
