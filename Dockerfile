@@ -22,7 +22,7 @@ RUN apt update; apt install -y --no-install-recommends wget cpio cups ca-certifi
     tar -xzvf mysql.tar.gz -C / ;\
     rm mysql.tar.gz ;\ 
     mv /mysql-connector-java-${MYSQL_CONNECTOR_VERSION}/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}.jar /papercut/server/lib-ext/ ;\
-    rm -r /papercut/mysql-connectechor-java-${MYSQL_CONNECTOR_VERSION} ;\
+    rm -r /papercut/mysql-connector-java-${MYSQL_CONNECTOR_VERSION} ;\
     chown -R papercut:papercut /papercut ;\
     chmod +x /papercut/server/bin/linux-x64/setperms ;\
     /papercut/server/bin/linux-x64/setperms ;\
