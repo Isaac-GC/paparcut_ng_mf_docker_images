@@ -14,7 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [{major_ver: 19.x, ver: 19.2.7.62195}, {major_ver: 20.x, ver: 20.1.4.57927}, {major_ver: 21.x, ver: 21.2.10.62186}, {major_ver: 22.x, ver: 22.0.1.62695}]
+        version: [
+          {major_ver: 19.x, ver: 19.2.7.62195}, {major_ver: 20.x, ver: 20.1.4.57927}, {major_ver: 21.x, ver: 21.2.10.62186}, {major_ver: 22.x, ver: 22.0.1.62695},
+          {major_ver: 20.x, ver: 20.1.8.66704}, {major_ver: 21.x, ver: 21.2.12.66701}, {major_ver: 22.x, ver: 22.0.12.66453}
+          ]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
