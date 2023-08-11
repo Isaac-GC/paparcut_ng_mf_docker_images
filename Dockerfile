@@ -26,6 +26,9 @@ RUN apt update; apt install -y --no-install-recommends wget cpio cups ca-certifi
     chown -R papercut:papercut /papercut ;\
     chmod +x /papercut/server/bin/linux-x64/setperms ;\
     /papercut/server/bin/linux-x64/setperms ;\
+    apt-get clean autoclean ;\
+    apt-get autoremove -y ;\
+    rm -rf /var/lib/{apt,dpkg,cache,log}/ ;\
     runuser -l papercut -c "/papercut/server/bin/linux-x64/db-tools init-db -f -q"
 
 
