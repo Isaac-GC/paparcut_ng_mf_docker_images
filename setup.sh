@@ -41,7 +41,7 @@ runuser -l papercut -c "/papercut/server/bin/linux-x64/db-tools init-db -f -q"
 /etc/init.d/papercut start
 /etc/init.d/papercut-web-print start
 
-python3 /app/image_setup.sh
+python3 /app/image_setup.py
 
 /etc/init.d/papercut stop
 /etc/init.d/papercut-web-print stop
