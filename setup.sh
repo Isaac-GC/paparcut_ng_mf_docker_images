@@ -41,6 +41,11 @@ runuser -l papercut -c "/papercut/server/bin/linux-x64/db-tools init-db -f -q"
 /etc/init.d/papercut start
 /etc/init.d/papercut-web-print start
 
+echo -e "##########################################\n\n"
+echo -e Waiting 30 seconds to ensure the Application/Web Print server is fully started
+echo -e "##########################################\n\n"
+sleep 30
+
 python3 /app/image_setup.py
 
 /etc/init.d/papercut stop
