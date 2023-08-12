@@ -99,6 +99,10 @@ payload_page6 = {
 # Local website setup
 host = "http://localhost:9191/app"
 
+headers = {
+    'Origin': 'http://localhost:9191'
+}
+
 session = requests.Session()
 
 session.get(host)
@@ -113,6 +117,6 @@ setup_steps = [
 ]
 
 for step in setup_steps:
-    resp = session.post(host, data=step)
+    resp = session.post(host, data=step, headers=headers)
     if resp.status_code != 200:
         print(resp.status_code, resp.reason)
