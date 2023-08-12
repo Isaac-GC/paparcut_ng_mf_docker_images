@@ -96,8 +96,23 @@ payload_page6 = {
 
 ### End default vars/config
 
+# Local website setup
+host = "http://localhost:9191/app"
 
-# GET /app?service=page/SetupAdmin
+session = requests.Session()
 
+session.get(host)
 
-# POST /app
+setup_steps = [
+    payload_page1,
+    payload_page2,
+    payload_page3,
+    payload_page4,
+    payload_page5,
+    payload_page6
+]
+
+for step in setup_steps:
+    resp = session.post(host, data=step)
+    if resp.status_code != 200:
+        print(resp.status_code, resp.reason)
