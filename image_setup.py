@@ -103,6 +103,21 @@ headers = {
     'Origin': 'http://localhost:9191'
 }
 
+server_ready = False
+
+while ( not server_ready ):
+    try:
+        resp = requests.get(host)
+        if (resp.status_code == 200):
+            server_ready = True
+    except requests.exceptions.Timeout:
+        continue
+    except requests.exceptions.RequestException:
+        continue
+
+
+
+
 session = requests.Session()
 
 session.get(host)
@@ -115,6 +130,9 @@ setup_steps = [
     payload_page5,
     payload_page6
 ]
+
+
+
 
 for step in setup_steps:
     resp = session.post(host, data=step, headers=headers)
