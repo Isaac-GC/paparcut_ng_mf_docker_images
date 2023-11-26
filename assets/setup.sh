@@ -2,7 +2,7 @@
 
 ## Setup Prerequisites
 apt update 
-apt install -y --no-install-recommends wget cpio cups cups-pdf nano curl ca-certificates python3 python3-pip libshell-perl
+apt install -y --no-install-recommends wget cpio cups cups-pdf nano curl ca-certificates python3 python3-pip libshell-perl # iptables
 
 # Add the cups config that opens up port 631 for papercut server
 mv /app/cupsd.conf /etc/cups/cupsd.conf
@@ -65,3 +65,5 @@ mv /app/startup.sh /startup.sh
 
 /etc/init.d/papercut stop
 /etc/init.d/papercut-web-print stop
+
+mv /app/server.properties /papercut/server/server.properties
